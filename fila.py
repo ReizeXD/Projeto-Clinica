@@ -24,7 +24,10 @@ class Fila():
             return item
     def imprimir(self):
         aux=self.inicio
+        lista=[]
         while aux!=None:
             print(aux.valor)
+            lista.append(aux.valor)
             aux=aux.proximo
         print("----------------")
+        return lista
