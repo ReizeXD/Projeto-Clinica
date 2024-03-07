@@ -31,6 +31,8 @@ co15="#1182AF"
 
 root=customtkinter.CTk()
 customtkinter.set_appearance_mode("Light")
+
+
 class sistema():
     def __init__(self):
         self.df_list=""
@@ -70,19 +72,21 @@ class sistema():
         self.frame4=customtkinter.CTkFrame(self.frame1,bg_color=co6,fg_color=co6)
         self.frame4.place(relx=0.05, rely=0.25, relwidth=0.9, relheight=0.55)
 
+        self.tree_frame = tk.Frame(self.frame4)
+        self.tree_frame.pack(fill="both", expand=True)
     def frames_da_tela2(self):
-        self.frame5=customtkinter.CTkFrame(self.tela_p,bg_color=co0,fg_color=co0)
-        self.frame5.place(relx=1, rely=1, relwidth=1, relheight=1)
+        self.frame5=customtkinter.CTkFrame(self.tela_p,bg_color=co1,fg_color=co1)
+        self.frame5.place(relx=0 ,rely=0, relwidth=1, relheight=1)
     def widgets_frame1(self):
 
         self.label2=customtkinter.CTkLabel(self.frame1,text="Consultar",font=('Castellar',35,'bold' ))
-        self.label2.place(relx=0.18,rely=0.02)
+        self.label2.place(relx=0.18,rely=0.02),
 
         self.combobox_var = customtkinter.StringVar(value="Serviço")
         self.box=customtkinter.CTkComboBox(self.frame1,values=["Fisioterapia","Psicologo",'Oftalmologista','Cardiologista','Oncologista'],variable=self.combobox_var,command=self.atualizar)
         self.box.place(relx=0.1,rely=0.14)
 
-        self.buttom2=customtkinter.CTkButton(self.frame1, width=120, text="Próximo",command=self.proximo)
+        self.buttom2=customtkinter.CTkButton(self.frame1, width=120, text="Próximo",command=self.proximo,hover_color=co0)
         self.buttom2.place(relx=0.6,rely=0.14)
 
         self.label_linha=customtkinter.CTkLabel(self.frame1, text="h", width=1, height=350,bg_color=co0)
@@ -109,33 +113,33 @@ class sistema():
 
         self.combobox_var2 = customtkinter.StringVar(value="Serviço")
         self.box2=customtkinter.CTkComboBox(self.frame2,values=["Fisioterapia","Psicologo",'Oftalmologista','Cardiologista','Oncologista'],variable=self.combobox_var2)
-        self.box2.place(relx=0.6,rely=0.49)
+        self.box2.place(relx=0.6,rely=0.51)
 
-        self.buttom=customtkinter.CTkButton(self.frame2,height=40,width=130, text="Agendar", command=self.agendar)
+        self.buttom=customtkinter.CTkButton(self.frame2,height=40,width=130, text="Agendar", command=self.agendar,hover_color=co0)
         self.buttom.place(relx=0.35,rely=0.67)
 
     def widgets_frame5(self):
-        self.label3=customtkinter.CTkLabel(self.frame5,text=self.p_area,font=('Castellar',35,'bold' ),fg_color=co6,bg_color=co6)
-        self.label3.place(relx=0.5,rely=0.02)
+        self.label3=customtkinter.CTkLabel(self.frame5,text=self.p_area,font=('Castellar',35,'bold','underline' ), text_color=co0)
+        self.label3.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-        self.label4=customtkinter.CTkLabel(self.frame5,text=self.proximo,font=('Castellar',35,'bold' ))
-        self.label4.place(relx=0.5,rely=0.5)
+        self.label4=customtkinter.CTkLabel(self.frame5,text=self.proximo[0],font=('Castellar',20,'bold' ), wraplength=300, text_color=co7)
+        self.label4.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def mostrar_fila(self,null=0):
     # creating a treeview with dual scrollbars
-        print("teste")
         list_header = ["Pacientes","RG","CPF","Endereço","Número"]
+        
         self.tree_pacientes = ttk.Treeview(self.frame4, selectmode="extended",columns=list_header, show="headings",height=18)
      
         # vertical scrollbar
-        vsb = ttk.Scrollbar(self.frame4, orient="vertical", command=self.tree_pacientes.yview)   
+        self.vsb = ttk.Scrollbar(self.frame4, orient="vertical", command=self.tree_pacientes.yview)   
         # horizontal scrollbar
-        hsb = ttk.Scrollbar(self.frame4, orient="horizontal", command=self.tree_pacientes.xview)
+        self.hsb = ttk.Scrollbar(self.frame4, orient="horizontal", command=self.tree_pacientes.xview)
 
-        self.tree_pacientes.grid(column=1, row=1, sticky='nsew')
-        vsb.place(relx=0.95, rely=0, relheight=1)
-        hsb.place(relx=0, rely=0.95, relwidth=0.95)
-        self.tree_pacientes.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree_pacientes.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.vsb.place(relx=0.95, rely=0, relheight=1)
+        self.hsb.place(relx=0, rely=0.95, relwidth=0.95)
+        self.tree_pacientes.configure(yscrollcommand= self.vsb.set, xscrollcommand=self.hsb.set)
         self.frame4.grid_rowconfigure(0, weight=1)
         self.frame4.grid_columnconfigure(0, weight=1)
         hd = ['nw', 'nw', 'nw', 'center', 'center']
@@ -153,7 +157,7 @@ class sistema():
             
             
     def logo(self):
-        self.app_logo=Image.open("imagem\ccc.png")
+        self.app_logo=Image.open("imagem\cc.png")
         self.app_logo=self.app_logo.resize((72,72))
         self.app_logo=ImageTk.PhotoImage(self.app_logo)
 
@@ -230,13 +234,6 @@ class sistema():
         self.atualizar()
         if self.proximo:
             self.tela_proximo()
-        
-        
-        
-
-        
-
-
-
+    
 
 sistema()
