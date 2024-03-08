@@ -6,7 +6,7 @@ from tkinter import ttk
 from CTkMessagebox import CTkMessagebox
 from tkinter import filedialog as fd
 from PIL import ImageTk, Image
-from tkcalendar import DateEntry
+
 
 from fila import *
 
