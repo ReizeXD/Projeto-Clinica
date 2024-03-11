@@ -14,7 +14,7 @@ Olá, eu sou da Universidade Federal de Alagoas (UFAL) e criei este projeto para
 
 ## Sobre o Projeto
 
-Este projeto visa criar um agendador de uma clínica médica para agendar pacientes em um centro clínico usando a estrutura de dados Fila. O sistema permite que o paciente seja agendado em diferentes áreas, sendo isnerido em diferentes filas.
+Este projeto visa criar um agendador de uma clínica médica para agendar pacientes em um centro clínico usando a estrutura de dados Fila. O sistema permite que o paciente seja agendado em diferentes áreas, sendo inserido em diferentes filas.
 ## Funcionalidades Principais
 
 - Agendar o paciente na fila desejada.
