@@ -34,11 +34,11 @@ Para executar o projeto em sua máquina, siga os passos abaixo:
 
 1. Clone o repositório em sua máquina:
   ```bash
-  git clone https://github.com/ReizeXD/Conversor-de-Bases.git
+  git clone https://github.com/ReizeXD/Projeto-Clinica.git
   ```
 2. Acesse o repositório usando:
   ```bash
-  cd Conversor-de-Bases
+  cd Projeto-Clinica
   ```
 3. Instalando as dependências:
   ```bash
